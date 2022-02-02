@@ -1,5 +1,5 @@
-#N-Queen
-#다시 한번 풀어보는 것을 추천
+# #N-Queen
+# #다시 한번 풀어보는 것을 추천
 def adjacent(chess, x):
     for i in range(x):
         if chess[x] == chess[i] or abs(chess[x] - chess[i]) == x - i:
@@ -26,3 +26,19 @@ def solution(n):
     return cnt
 
 print(solution(4))
+
+#행렬의 곱셈
+#이런 문제도 어려워하니
+def solution(arr1, arr2):
+    x = len(arr1)
+    y = len(arr2[0])
+    z = len(arr2)
+    answer = [[0] * y for i in range(x)]
+    for i in range(x):
+        for j in range(y):
+            for k in range(z):
+                answer[i][j] += arr1[i][k] * arr2[k][j]
+
+    return answer
+
+print(solution([[2, 3, 2], [4, 2, 4], [3, 1, 4]], [[5, 4, 3], [2, 4, 1], [3, 1, 1]]))
