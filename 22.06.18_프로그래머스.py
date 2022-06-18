@@ -43,7 +43,6 @@
 
 
 from collections import Counter
-
 def solution(str1, str2):
     str1 = str1.lower()
     str2 = str2.lower()
@@ -86,4 +85,71 @@ def solution(str1, str2):
         answer = int(65536*len(inter)/len(union))
     return answer
 
+
+from collections import Counter
+def solution(str1, str2):
+    answer = 0
+    str1 = str1.lower()
+    str2 = str2.lower()
+    str_1 = []
+    str_2 = []
+    for i in range(len(str1) - 1):
+        temp = ''
+        temp1 = str1[i]
+        temp2 = str1[i + 1]
+        if 97 <= ord(temp1) <= 122 and 97 <= ord(temp2) <= 122:
+            temp += (temp1 + temp2)
+            str_1.append(temp)
+        else:
+            continue
+    for i in range(len(str2) - 1):
+        temp = ''
+        temp1 = str2[i]
+        temp2 = str2[i + 1]
+        if 97 <= ord(temp1) <= 122 and 97 <= ord(temp2) <= 122:
+            temp += (temp1 + temp2)
+            str_2.append(temp)
+        else:
+            continue
+
+    Counter1 = Counter(str_1)
+    Counter2 = Counter(str_2)
+
+    inter = list((Counter1 & Counter2).elements())
+    union = list((Counter1 | Counter2).elements())
+    # print(list((Counter1 & Counter2).elements()))
+    # print(list((Counter1 & Counter2).values()))
+    # print(list((Counter1 & Counter2).keys()))
+
+    if len(union) != 0:
+        answer = int(65536 * len(inter) / len(union))
+
+    else:
+        answer = 65536
+
+    return answer
+
 print(solution("FRANCE", "french"))
+
+#최솟값 만들기
+def solution(A,B):
+    answer = 0
+    A.sort()
+    B.sort(reverse=True)
+    for i in range(len(A)):
+        answer += (A[i]*B[i])
+
+    return answer
+
+#줄 서는 방법
+#역시나 시간 초과
+from itertools import permutations
+def solution(n, k):
+    answer = []
+    lst = []
+    for i in range(1, n+1):
+        lst.append(i)
+    temp = list(permutations(lst, n))
+    answer = list(temp[k-1])
+    return answer
+
