@@ -58,3 +58,42 @@ for i in range(n):
             dp[i] = max(dp[i], dp[j]+1)
 print(n - max(dp))
 
+
+#11055 가장 큰 증가 부분 수열
+#끼워 맞추고 제대로 풀지도 못한 것 같은 문제
+import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+lst = list(map(int, input().split()))
+dp = [1]*n
+dp[0] = lst[0]
+for i in range(1, n):
+    for j in range(i):
+        if lst[i] > lst[j]:
+            dp[i] = max(dp[j] + lst[i], dp[i])
+        else:
+            dp[i] = max(dp[i], lst[i])
+
+print(max(dp))
+
+
+#11722 가장 긴 감소하는 부분 순열
+import sys
+
+input = sys.stdin.readline
+
+n = int(input())
+
+lst = list(map(int, input().split()))
+for i in range(n):
+    lst[i] = lst[i]*(-1)
+dp = [1]*n
+
+for i in range(n):
+    for j in range(i):
+        if lst[i] > lst[j]:
+            dp[i] = max(dp[i], dp[j]+1)
+
+print(max(dp))
