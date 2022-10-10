@@ -273,6 +273,7 @@ def topology_sort():
 
 topology_sort()
 
+#입력 예시
 # 5
 # 10 -1
 # 10 1 -1
